@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício - Mai / KOF</title>
+</head>
+
+<body>
+
+    <canvas></canvas>
+    <script>
+        let cx = document.querySelector("canvas").getContext("2d");
+        let img = document.createElement("img");
+        img.src = "img/player.png";
+        let spriteW = 63, spriteH = 133;
+        img.addEventListener("load", () => {
+            let cycle = 0;
+            setInterval(() => {
+            cx.clearRect(0, 0, spriteW, spriteH);
+            cx.drawImage(img,
+                        // source rectangle
+                        cycle * spriteW, 0, spriteW, spriteH,
+                        // destination rectangle
+                        0,               0, spriteW, spriteH);
+            cycle = (cycle + 1) % 8;
+            }, 120);
+        });
+    </script>
+    
+</body>
+</html>
